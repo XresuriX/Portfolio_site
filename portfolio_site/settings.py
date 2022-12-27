@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 import os
 from pathlib import Path
 import environ
-
+from django.dispatch import Signal
 
 env = environ.Env()
 environ.Env.read_env()
@@ -50,6 +50,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'storages',
+    'rest_framework',
+    #"corsheaders",
 
 
 ]
@@ -189,4 +191,16 @@ MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 10
+}
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
+
+# Return Truthy values to enable a specific request.
+# This allows users to build custom logic into the request handling
+check_request_enabled = Signal()
