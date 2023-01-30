@@ -1,13 +1,18 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    './pages/**/*.{js,ts,jsx,tsx,css}',
-    './layouts/**/*.{js,ts,jsx,tsx,css}',
-    './components/**/*.{js,ts,jsx,tsx,css}',
+    "./src/**/*.{html,js,tsx}",
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
     './styles/**/*.css'
   ],
   theme: {
-    extend: {},
+    extend: {
+        colors: {
+        cobalt: '#0047AB',
+        emerald: '#50C878',
+        },
+    },
   },
   plugins: [],
 }
